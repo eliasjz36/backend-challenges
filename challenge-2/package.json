@@ -1,0 +1,22 @@
+{
+  "name": "challenge-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "typedoc": "typedoc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "ts-node": "^10.7.0",
+    "typedoc": "^0.22.13",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {}
+}
