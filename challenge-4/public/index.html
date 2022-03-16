@@ -7,11 +7,25 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<form method="POST">
-			<input type="text" name="title" />
-			<input type="number" name="price" />
-			<input type="text" name="thumbnail" />
-			<input type="submit" value="Upload a file" />
+		<form method="POST" action="/api/products">
+			<div>
+				<label for="title">Title</label>
+				<input type="text" name="title" id="title" placeholder="Fiat 600" />
+			</div>
+			<div>
+				<label for="price">Price</label>
+				<input type="number" name="price" id="price" placeholder="425000" />
+			</div>
+			<div>
+				<label for="thumbnail">Thumbnail</label>
+				<input
+					type="text"
+					name="thumbnail"
+					id="thumbnail"
+					placeholder="https://www.image.com"
+				/>
+			</div>
+			<input type="submit" value="Submit" />
 		</form>
 	</body>
 </html>

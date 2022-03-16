@@ -1,6 +1,6 @@
 import express from 'express';
 import fs from 'fs';
-import products from './db.json';
+import { Container } from './classes';
 
 const { Router } = express;
 
@@ -10,31 +10,41 @@ const router = Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const container = new Container(__dirname + '/files/products.json');
+
+app.get('/', (req, res) => {
+	res.sendFile(
+		'C:/Users/sebuc/OneDrive/Documentos/Elias/CoderHouse/backend/backend-challenges/challenge-4/public/index.html'
+	);
+});
+
 router.get('/products', (req, res) => {
+	const products = container.getAll();
+
 	res.json(products);
 });
 
 router.get('/products/:id', (req, res) => {
-	if (!products.find((product) => product.id === +req.params.id))
-		res.json({ error: 'product not found' });
+	const product = container.getById(+req.params.id);
 
-	res.json(products.find((product) => product.id === +req.params.id));
+	if (!product) res.json({ error: 'product not found' });
+
+	res.json(product);
 });
 
-router.post('/products/:id', (req, res) => {
-	products.push({ ...req.body, id: req.params.id });
-
-	fs.promises.writeFile('./src/db.json', JSON.stringify(products));
-
-	if (!products.find((product) => product.id === +req.params.id))
-		res.json({ error: 'product not found' });
-
-	res.json(req.body);
+router.post('/products', (req, res) => {
+	container.save(req.body).then((id) => res.json({ ...req.body, id }));
 });
 
 router.put('/products/:id', (req, res) => {
+	const product = container.getById(+req.params.id);
+
+	if (!product) res.json({ error: 'product not found' });
+
+	const products = container.getAll();
+
 	fs.promises.writeFile(
-		'./src/db.json',
+		'./src/files/products.json',
 		JSON.stringify(
 			products.map((product, index) => {
 				if (product.id === +req.params.id) {
@@ -46,20 +56,21 @@ router.put('/products/:id', (req, res) => {
 		)
 	);
 
-	if (!products.find((product) => product.id === +req.params.id))
-		res.json({ error: 'product not found' });
-
 	res.json(req.body);
 });
 
 router.delete('/products/:id', (req, res) => {
+	const product = container.getById(+req.params.id);
+
+	if (!product) res.json({ error: 'product not found' });
+
+	const products = container.getAll();
+
 	fs.promises.writeFile(
 		'./src/db.json',
 		JSON.stringify(products.filter((product) => product.id !== +req.params.id))
 	);
-
-	if (!products.find((product) => product.id === +req.params.id))
-		res.json({ error: 'product not found' });
+	container.deleteById(+req.params.id);
 
 	res.json(req.body);
 });
