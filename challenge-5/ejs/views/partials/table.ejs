@@ -1,0 +1,23 @@
+<!-- historial table -->
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Price</th>
+			<th scope="col">Photo URL</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if (data.length === 0) { %>
+		<tr>
+			<td colspan="3">There is no data</td>
+		</tr>
+		<% }else{ %> <% for (let i = 0; i < data.length; i++) { %>
+		<tr>
+			<td><%=data[i].name%></td>
+			<td><%=data[i].price%></td>
+			<td><img src="<%=data[i].url %>" alt="" /></td>
+		</tr>
+		<% } } %>
+	</tbody>
+</table>
