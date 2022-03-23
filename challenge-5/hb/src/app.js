@@ -1,12 +1,23 @@
 const express = require('express');
+const handlebars = require('express-handlebars');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.engine(
+	'hbs',
+	handlebars.engine({
+		extname: '.hbs',
+		defaultLayout: 'index.hbs',
+		layoutsDir: __dirname + '/views/layouts',
+		partialsDir: __dirname + '/views/partials',
+	})
+);
+
+app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-app.set('view engine', 'pug');
 
 const data = [];
 

@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.set('views', 'views');
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 const data = [];
@@ -23,4 +23,6 @@ app.post('/products', (req, res) => {
 	res.render('form', { data });
 });
 
-app.listen(8080, () => console.log('ready'));
+app.listen(8080, () => {
+	console.log('Server running on port 8080...');
+});

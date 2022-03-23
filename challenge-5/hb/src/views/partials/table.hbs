@@ -1,0 +1,22 @@
+<table class='table'>
+	<thead>
+		<tr>
+			<th scope='col'>Name</th>
+			<th scope='col'>Price</th>
+			<th scope='col'>Photo URL</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each data}}
+			<tr>
+				<td>{{this.name}}</td>
+				<td>{{this.price}}</td>
+				<td><img src={{this.url}} /></td>
+			</tr>
+		{{else}}
+			<tr>
+				<td colspan='3'>There is no data</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
