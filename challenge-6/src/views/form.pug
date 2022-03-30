@@ -10,7 +10,7 @@ head
     script.
         const socket = io.connect();
 
-        const render = (data) => {
+        const renderProducts = (data) => {
             const html = data
                 .map(
                     (elem, index) =>
@@ -22,11 +22,11 @@ head
                 )
                 .join(' ');
 
-            $('#products').append(html);
+            $('#products').html(html);
         };
 
         socket.on('products', (data) => {
-            render(data);
+            renderProducts(data);
         });
 
         const addProduct = (e) => {
@@ -36,6 +36,35 @@ head
                 url: $('#url').val(),
             };
             socket.emit('new-product', product);
+
+            return false;
+        }
+
+        const renderMessages = (data) => {
+            const html = data.map(
+                (elem, index) =>
+                    `<li> 
+                        <span class="fw-bold text-primary">${elem.email}</span>
+                        <span style="color: #8D4925;">${elem.date}</span>
+                        <span class="fst-italic text-success">${elem.msg}</span>
+                    </li>`
+                )
+                .join(' ');
+
+            $('#messages').html(html)
+        };
+
+
+        socket.on('messages', (data) => {
+            renderMessages(data)
+        })
+
+        const addMessage = (e) => {
+            const message = {
+                email: $('#email').val(),
+                msg: $('#message').val()
+            }
+            socket.emit('new-message', message);
 
             return false;
         }
@@ -60,6 +89,26 @@ body(class="w-50 mx-auto shadow-sm mt-5")
     br
 
     include partials/table.pug
+
+    br
+    hr
+
+    h2.text-center.mt-5 Message center
+
+    form(onSubmit="return addMessage(this)")
+        .form-group
+            label(for='email') Email address 
+            input#email.form-control(type='email' name='email' placeholder='yourname@gmail.com' required)
+
+        ul#messages
+
+        .form-group
+            label(for='message') Message
+            input#message.form-control(type='text' name='message' placeholder='Write something here...' required)
+        button.btn.btn-primary.mt-3(type='submit') Send
+
+    br
+    hr
 
     a.btn.btn-primary(href='/products') Go to product table
 

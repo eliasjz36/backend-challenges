@@ -4,13 +4,14 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon ./src/app.js"
+		"dev": "ts-node-dev ./src/app.ts"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"express": "^4.17.3",
+		"moment": "^2.29.1",
 		"pug": "^3.0.2",
 		"socket.io": "^4.4.1"
 	},
