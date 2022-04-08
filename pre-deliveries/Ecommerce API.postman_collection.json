@@ -1,0 +1,312 @@
+{
+	"info": {
+		"_postman_id": "24c8863e-de70-49cc-939f-74c388e9e05e",
+		"name": "Ecommerce API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Car\",\r\n    \"description\": \"A nice car\",\r\n    \"code\": \"1232132\",\r\n    \"photo\": \"https://img.freepik.com/free-psd/3d-rendering-ui-icon_23-2149182282.jpg?t=st=1649223393~exp=1649223993~hmac=fbc87d3f154df3ad8e9f5fef66dc100d00b0ace86843f4b0fc3adc7c7bab80f2&w=740\",\r\n    \"price\": 32000,\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1649352264022"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"An updated car\",\r\n    \"description\": \"An updated car\",\r\n    \"price\": 900000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1649352264022"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1649352264022"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Create Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"name\": \"Car\",\r\n\t\t\t\"description\": \"A nice car\",\r\n\t\t\t\"code\": \"1232132\",\r\n\t\t\t\"photo\": \"https://img.freepik.com/free-psd/3d-rendering-ui-icon_23-2149182282.jpg?t=st=1649223393~exp=1649223993~hmac=fbc87d3f154df3ad8e9f5fef66dc100d00b0ace86843f4b0fc3adc7c7bab80f2&w=740\",\r\n\t\t\t\"price\": 32000,\r\n\t\t\t\"stock\": 10,\r\n\t\t\t\"id\": \"1649352573232\",\r\n\t\t\t\"timestamp\": 1649352573232\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"Car\",\r\n\t\t\t\"description\": \"A nice car\",\r\n\t\t\t\"code\": \"1232132\",\r\n\t\t\t\"photo\": \"https://img.freepik.com/free-psd/3d-rendering-ui-icon_23-2149182282.jpg?t=st=1649223393~exp=1649223993~hmac=fbc87d3f154df3ad8e9f5fef66dc100d00b0ace86843f4b0fc3adc7c7bab80f2&w=740\",\r\n\t\t\t\"price\": 32000,\r\n\t\t\t\"stock\": 10,\r\n\t\t\t\"id\": \"1649352573781\",\r\n\t\t\t\"timestamp\": 1649352573781\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"Car\",\r\n\t\t\t\"description\": \"A nice car\",\r\n\t\t\t\"code\": \"1232132\",\r\n\t\t\t\"photo\": \"https://img.freepik.com/free-psd/3d-rendering-ui-icon_23-2149182282.jpg?t=st=1649223393~exp=1649223993~hmac=fbc87d3f154df3ad8e9f5fef66dc100d00b0ace86843f4b0fc3adc7c7bab80f2&w=740\",\r\n\t\t\t\"price\": 32000,\r\n\t\t\t\"stock\": 10,\r\n\t\t\t\"id\": \"1649352574251\",\r\n\t\t\t\"timestamp\": 1649352574251\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"Car\",\r\n\t\t\t\"description\": \"A nice car\",\r\n\t\t\t\"code\": \"1232132\",\r\n\t\t\t\"photo\": \"https://img.freepik.com/free-psd/3d-rendering-ui-icon_23-2149182282.jpg?t=st=1649223393~exp=1649223993~hmac=fbc87d3f154df3ad8e9f5fef66dc100d00b0ace86843f4b0fc3adc7c7bab80f2&w=740\",\r\n\t\t\t\"price\": 32000,\r\n\t\t\t\"stock\": 10,\r\n\t\t\t\"id\": \"1649352574685\",\r\n\t\t\t\"timestamp\": 1649352574685\r\n\t\t}\r\n\t]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products of Cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cart/:id/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								":id",
+								"products"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "213932645435"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product to Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"34327222387\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cart/:id/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								":id",
+								"products"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1463981745104"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cart/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1150570161498"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cart/:id/products/:id_prod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cart",
+								":id",
+								"products",
+								":id_prod"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "213932645435"
+								},
+								{
+									"key": "id_prod",
+									"value": "1649352574251"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
