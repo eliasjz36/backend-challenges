@@ -1,0 +1,41 @@
+{
+	"id": "messages",
+	"messages": [
+		{
+			"id": 1,
+			"author": {
+				"id": 1,
+				"name": "Elias",
+				"lastName": "Jimenez",
+				"age": 18,
+				"alias": "eliasj36",
+				"avatar": "https://google.com"
+			},
+			"text": "Hi"
+		},
+		{
+			"id": 2,
+			"author": {
+				"id": 2,
+				"name": "Elias",
+				"lastName": "Jimenez",
+				"age": 18,
+				"alias": "eliasj36",
+				"avatar": "https://google.com"
+			},
+			"text": "Hi"
+		},
+		{
+			"id": 3,
+			"author": {
+				"id": 3,
+				"name": "Elias",
+				"lastName": "Jimenez",
+				"age": 18,
+				"alias": "eliasj36",
+				"avatar": "https://google.com"
+			},
+			"text": "Hi"
+		}
+	]
+}
