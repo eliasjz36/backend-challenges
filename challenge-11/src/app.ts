@@ -12,10 +12,11 @@ import indexRoute from './routes/index.routes';
 import logger from './utils/logger';
 import connection from './db/connection';
 import passport from 'passport';
+import yargs from 'yargs';
 
 const app: Express = express();
 
-const port = process.env.PORT || 8080;
+const port = yargs.default({ port: 8080 }).argv.port;
 
 const httpServer = createServer(app);
 
@@ -31,7 +32,7 @@ app.use(
 				'mongodb+srv://crud:crud@cluster0.7wry7.mongodb.net/crud?retryWrites=true&w=majority',
 		}),
 		secret: 'secret',
-		resave: false,
+		resave: true,
 		saveUninitialized: false,
 		cookie: {
 			maxAge: 600000,

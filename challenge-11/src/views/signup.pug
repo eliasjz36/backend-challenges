@@ -12,7 +12,7 @@ head
 body(class="w-50 mx-auto shadow-sm mt-5")
     h2.text-center.mt-5 Sign Up
 
-    form.p-5
+    form(action="/auth/signup" method="post").p-5
         .form-outline.mb-4
             label.form-label(for='email') Email
             input#email.form-control(name="email" type='email' required)

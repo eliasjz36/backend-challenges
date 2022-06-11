@@ -49,7 +49,7 @@ passport.use(
 		(req, email, password, done) => {
 			UserModel.findOne({ email: email }, (err, user) => {
 				if (err) {
-					logger.error(`Error in SignUp: ${err}`);
+					logger.error(`Error in sign up: ${err}`);
 
 					return done(err);
 				}
@@ -83,11 +83,11 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-	done(null, user.id);
+	done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
-	UserModel.findById(id, done);
+	UserModel.findOne(id, done);
 });
 
 const authRoute = express.Router();
@@ -101,7 +101,7 @@ authRoute.post(
 );
 
 // signup
-authRoute.get('/login', getLogin);
+authRoute.get('/signup', getSignup);
 authRoute.post(
 	'/signup',
 	passport.authenticate('signup', { failureRedirect: '/failsignup' }),
